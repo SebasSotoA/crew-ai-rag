@@ -1,0 +1,24 @@
+retrieve_task:
+  description: >
+    Search the vector store for relevant information about: '{query}'
+    Use the vector_search tool to find the most relevant chunks.
+  expected_output: >
+    A collection of raw text chunks relevant to the query.
+  agent: retriever_agent
+
+analyze_task:
+  description: >
+    Review the retrieved chunks from the retriever agent.
+    Remove duplicates and off-topic passages.
+    Organize and highlight the key facts.
+  expected_output: >
+    A clean, structured summary of the most relevant context.
+  agent: analyst_agent
+
+respond_task:
+  description: >
+    Using the analyzed context, answer the user's question: '{query}'
+    Be accurate, concise and well-formatted.
+  expected_output: >
+    A complete, accurate, and well-formatted final answer.
+  agent: supervisor_agent
