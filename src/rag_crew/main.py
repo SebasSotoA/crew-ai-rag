@@ -12,7 +12,7 @@ def run_query(query: str):
 
 def run():
     """Run the crew with the default query from main."""
-    query = "What are AI applications in cloud security according to the document?"
+    query = "How many vacation days do I get after 2 years?"
     try:
         result = run_query(query)
         print("\n\n=== FINAL ANSWER ===")
