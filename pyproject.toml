@@ -20,6 +20,7 @@ prerelease = "allow"
 [project.scripts]
 rag_crew = "rag_crew.main:run"
 run_crew = "rag_crew.main:run"
+rag_console = "rag_crew.console:main"
 
 [build-system]
 requires = ["hatchling"]

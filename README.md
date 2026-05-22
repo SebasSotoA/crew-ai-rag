@@ -136,6 +136,37 @@ uv run python -m rag_crew.main
 
 Edit the query in `src/rag_crew/main.py` or pass inputs via the CrewAI API.
 
+## Interactive console (recommended)
+
+A menu-driven console app lets you explore the index, rebuild it, and ask questions without editing code:
+
+```bash
+uv run rag_console
+```
+
+Or:
+
+```bash
+uv run python -m rag_crew.console
+```
+
+| Menu option | What it does |
+|-------------|--------------|
+| **1) Explore** | List indexed PDFs, chunk counts, optional search preview |
+| **2) Rebuild** | Delete `chroma_db/` and re-index all PDFs in `DOCUMENTS_FOLDER` |
+| **3) Ask** | Interactive Q&A loop — each question runs the full RAG crew |
+| **4) Exit** | Quit |
+
+**Typical workflow:**
+
+1. Copy PDFs into the folder set in `DOCUMENTS_FOLDER` (`.env`)
+2. Start the console: `uv run rag_console`
+3. Choose **Rebuild** (first time, or when PDFs change)
+4. Choose **Ask** and type questions
+5. Use **Explore** anytime to verify what is indexed
+
+Asking questions does **not** re-index — only **Rebuild** clears and recreates the database.
+
 ## Inspecting the vector store
 
 List indexed files and chunk counts:
@@ -156,6 +187,7 @@ uv run python -m rag_crew.vector_store inspect "your search query"
 .
 ├── src/rag_crew/
 │   ├── main.py              # Entry point — runs the crew
+│   ├── console.py           # Interactive menu (explore / rebuild / ask)
 │   ├── crew.py              # Agent and task definitions
 │   ├── vector_store.py      # PDF indexing + inspect command
 │   ├── config/
